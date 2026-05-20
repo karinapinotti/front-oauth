@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+    <h1>Login OAuth2.0 Google</h1>
+
+    <!-- 1. Carregue a biblioteca do Google Identity -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+
+    <!-- 2. Div onde o botão será renderizado -->
+    <div id="g_id_onload"
+        data-client_id="{seu ID client do google}"
+        data-callback="handleCredentialResponse"
+        data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="signin_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+    </div>
+
+    <!-- 3. Script para lidar com a resposta do login -->
+    <script>
+        function handleCredentialResponse(response) {
+            console.log("JWT ID Token recebido: " + response.credential);
+            // Aqui você envia o token para seu backend para autenticar o usuário
+        }
+    </script>
+</body>
+</html>
